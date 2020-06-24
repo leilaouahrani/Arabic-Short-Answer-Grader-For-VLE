@@ -19,7 +19,7 @@
  *
  * @package    qtype
  * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,17 +28,17 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/questionlib.php');
 require_once($CFG->dirroot . '/question/engine/lib.php');
-require_once($CFG->dirroot . '/question/type/arabicanswer/question.php');
+require_once($CFG->dirroot . '/question/type/arabicanswer1/question.php');
 
 
 /**
- * The arabicanswer question type.
+ * The arabicanswer1 question type.
  *
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_arabicanswer extends question_type {
+class qtype_arabicanswer1 extends question_type {
 
     /*******************************************************************************************************************************************/
  /**
@@ -47,7 +47,7 @@ class qtype_arabicanswer extends question_type {
      * @param int $oldcontextid the context it is moving from.
      * @param int $newcontextid the context it is moving to.
      */
-    /*Assure le deplacement de tous les fichier appartenant à cette question d'un Contexte à un autre */
+   
     public function move_files($questionid, $oldcontextid, $newcontextid) {
         parent::move_files($questionid, $oldcontextid, $newcontextid);
         $this->move_files_in_hints($questionid, $oldcontextid, $newcontextid);
@@ -60,8 +60,7 @@ class qtype_arabicanswer extends question_type {
      * @param int $questionid the question being deleted.
      * @param int $contextid the context the question is in.
      */
-    /*
-Supprimer tous les fichiers appartenant à cette question*/
+ 
     protected function delete_files($questionid, $contextid) {
         parent::delete_files($questionid, $contextid);
         $this->delete_files_in_hints($questionid, $contextid);
@@ -69,18 +68,18 @@ Supprimer tous les fichiers appartenant à cette question*/
     
         /*******************************************************************************************************************************************/
 
-    /*Ajouter la question a la base de données*/
+    /*Add the question to the DB */
     public function save_question_options($question) {
          global $DB;
         $result = new stdClass();
 
-        /*mettre a jour ou ajouter la reponse dans la table question_answers*/
+        /*Add the reponse to question_answers Table*/
         $context = $question->context;
         $oldanswers = $DB->get_records('question_answers',
                 array('question' => $question->id), 'id ASC');
 
             // Update an existing answer if possible.
-            //Mettre a jour une reponse si c'est possible
+             
             $answer = array_shift($oldanswers);
             if (!$answer) {
                
@@ -103,7 +102,7 @@ Supprimer tous les fichiers appartenant à cette question*/
      * @param object $context needed for working with files.
      * @return $answer answer with filled data.
      */
-        //creer une nouvelle question
+        //create a new  question
         $answer->answer   = $question->answer;
         $answer->fraction = 1;
         $answer->feedback = '';
@@ -120,18 +119,18 @@ Supprimer tous les fichiers appartenant à cette question*/
             $DB->delete_records('question_answers', array('id' => $oldanswer->id));
         }
         
-        // Save question options in question_arabicanswer table.
-        //Ajouter la question a la table  question_arabicanswer 
-        if ($options = $DB->get_record('qtype_arabicanswer_options', array('questionid' => $question->id))) {
+        // Save question options in question_arabicanswer1 table.
+       
+        if ($options = $DB->get_record('qtype_arabicanswer1_options', array('questionid' => $question->id))) {
             // No need to do anything, since the answer IDs won't have changed
             // But we'll do it anyway, just for robustness.
  
-            $DB->update_record('qtype_arabicanswer_options', $options);
+            $DB->update_record('qtype_arabicanswer1_options', $options);
         } else {
             $options = new stdClass();
             $options->questionid  = $question->id;
             
-            $DB->insert_record('qtype_arabicanswer_options', $options);
+            $DB->insert_record('qtype_arabicanswer1_options', $options);
         }
 
       
@@ -145,7 +144,7 @@ Supprimer tous les fichiers appartenant à cette question*/
      * @param object $questiondata the question data loaded from the database.
      */
     protected function initialise_question_instance(question_definition $question, $questiondata) {
-        //initialiser les champs commun des questions par exemple(temps de création , categorie,id du context ,feedback general ...)
+        
         parent::initialise_question_instance($question, $questiondata);
         /**
      * Initialise question_definition::answers field.
@@ -153,7 +152,7 @@ Supprimer tous les fichiers appartenant à cette question*/
      * @param object $questiondata the question data loaded from the database.
      * 
      */
-        //initialiser la réponse modele(feedback , answerformat,feedbackformat...)
+        //initialize the model answer(feedback , answerformat,feedbackformat...)
         $this->initialise_question_answers($question, $questiondata);
         
     }
@@ -163,7 +162,7 @@ Supprimer tous les fichiers appartenant à cette question*/
      * This method should return all the possible types of response that are
      * recognised for this question.
      **/
-    //Récupere toutes les réponses possible a cette question(dans ce type il n'y a qu'une seule)
+    // In this question type there is one response 
     /*public function get_possible_responses($questiondata) {
      $responses = array();
 
@@ -193,10 +192,10 @@ Supprimer tous les fichiers appartenant à cette question*/
      * @param int $question the question being deleted.
      * @param int $contextid the context this quesiotn belongs to.
      */
-    /*Supprimer la question de toutes les tables(La table specifique et la table generale)*/
+    /*Delete  question from all tables( specific and general table)*/
  public function delete_question($questionid, $contextid) {
         global $DB;
-        $DB->delete_records('qtype_arabicanswer_options', array('questionid' => $questionid));
+        $DB->delete_records('qtype_arabicanswer1_options', array('questionid' => $questionid));
 
             
         parent::delete_question($questionid, $contextid);
@@ -206,14 +205,14 @@ Supprimer tous les fichiers appartenant à cette question*/
      /**
      * Loads the question type specific options for the question.
      */
-    /*Récuperer les données de la question */
+    
     public function get_question_options($question) {
       global $DB, $OUTPUT;
      if (!isset($question->options)) {
             $question->options = new stdClass();
         }
         
-        $question->options = $DB->get_record('qtype_arabicanswer_options',
+        $question->options = $DB->get_record('qtype_arabicanswer1_options',
                 array('questionid' => $question->id));
         $question->options->answers = $DB->get_records('question_answers',
         array('question' => $question->id), 'id ASC');
