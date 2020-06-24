@@ -19,16 +19,16 @@
  *
  * @package    qtype
  * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Semantic Short Answer';
+$string['pluginname'] = 'Arabic Semantic Short Answer 1';
 $string['pluginname_help'] = 'Just enter the model answer and the mark will be automatically assigned';
-$string['pluginname_link'] = 'question/type/arabicanswer';
-$string['pluginnameadding'] = 'Adding a arabicanswer question';
-$string['pluginnameediting'] = 'Editing a arabicanswer question';
-$string['pluginnamesummary'] = 'A arabicanswer question is a question that automatically assign student responses based on a semantic similarity with the teacher\'s model response .';
+$string['pluginname_link'] = 'question/type/arabicanswer1';
+$string['pluginnameadding'] = 'Adding an arabicanswer1 question';
+$string['pluginnameediting'] = 'Editing an arabicanswer1 question';
+$string['pluginnamesummary'] = 'An arabicanswer1 question is a question that automatically assign student responses based on a semantic similarity with the teacher\'s model response .';
 $string['test'] = 'test';
 $string['pleaseenterananswer'] = 'Please enter an answer.';
 $string['answer'] = 'Answer: {$a}';
