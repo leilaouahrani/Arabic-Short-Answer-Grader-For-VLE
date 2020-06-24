@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jun 20 16:16:06 2020
-
-@author: Winsido
-"""
-
 import io
 import numpy as np
 import codecs as c
@@ -21,9 +16,7 @@ from flask import Flask,request
 app = Flask(__name__)
 
 def isri(x1):
-    #racine = "corpus"
-    #nvx = "stem\\StemmedCorpus.txt"
-
+    
     alpha = ['A','a','B','b','C','c','D','d','E','e','F','f','G','g','H','h','I','i','J','j','K','k',
              'L','l','M','m','N','n','O','o','P','p','Q','q','R','r','S','s','T','t','U','u','V','v',
              'W','w','X','x','Y','y','Z','z','.', ',', '¡','،', ':', '"', "'", '÷', '×', 'º', '>', '<', '|', '//','?','؟', '¿', '!', '@', '#', '$',
@@ -37,22 +30,20 @@ def isri(x1):
     alpha3 = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ّ', 'َ', 'ً', 'ُ', 'ٌ', 'ٍ', 'ْ', 'ِ']
     '''
 
-
-    with c.open("/home/harethraouf/mysite/pythonanywhere/beta.txt", "r", "utf-8")as f:
+    with c.open("/home/shortanswerplugin/mysite/pythonanywhere/beta.txt", "r", "utf-8")as f:
      beta = f.read()
     beta=beta.split()
-    with c.open("/home/harethraouf/mysite/pythonanywhere/stopwords.txt", "r", "utf-8")as f:
+    with c.open("/home/shortanswerplugin/mysite/pythonanywhere/stopwords.txt", "r", "utf-8")as f:
         stop = f.read()
     stop=stop.split()
 
     # ***************************************************************************************************
-    # Suppression des lettres non arabe et normalisation
-
+    # Removal of non-Arabic characters  and Normalization  
 
     for x in range(len(alpha)):
         if alpha[x] in x1:
             x1 = x1.replace(alpha[x],"")
-    # normalisation
+    # normalization
 
     for x in range(len(beta)):
         if beta[x] in x1:
@@ -69,9 +60,8 @@ def isri(x1):
                 del x1[x1.index(x)]
     x1 = ' '.join(x1)
 
-
     st = ISRIStemmer()
-    with c.open("/home/harethraouf/mysite/pythonanywhere/stopwords.txt", "r+", "utf-8") as file:
+    with c.open("/home/shortanswerplugin/mysite/pythonanywhere/stopwords.txt", "r+", "utf-8") as file:
         stop = file.read()
     stop=stop.split("\n")
 
@@ -119,20 +109,20 @@ def similarity(NWORDS,s1, s2):
     p1 = s1.split()
     p2 = s2.split()
     #*******************************************************************************************
-    # Recuperation des vecteurs de contexte de chaque mot des 2 rĂ©ponses s1 et s2 dans v1 et v2
+    # Recovery of the context vectors of each word of the answers s1 and s2 in v1 and v2
     v1, v2 = [0.0 for i in range(len(p1))], [0.0 for i in range(len(p2))]
     for i in range(len(p1)):
         if p1[i] in NWORDS:
             #print("mot: ",p1[i])
             x = NWORDS.index(p1[i])
             # v1[i]=Norm[x]
-            v1[i] = cc.getline("/home/harethraouf/mysite/pythonanywhere/SemanticSpaceNew.txt",x+1)
+            v1[i] = cc.getline("/home/shortanswerplugin/mysite/pythonanywhere/SemanticSpaceNew.txt",x+1)
             v1[i]=v1[i].split()
             #v1[i]=list(map(float,v1[i]))
            # print("Vecteur :",v1[i])
             if p1[i] in NWORDS:
                 y= NWORDS.index(p1[i])
-                id=float(cc.getline("/home/harethraouf/mysite/pythonanywhere/TF_MinMax_cyber.txt",y+1))
+                id=float(cc.getline("/home/shortanswerplugin/mysite/pythonanywhere/TF_MinMax_cyber.txt",y+1))
             else:
                 id=1
             v1[i] = [float(j) * id for j in v1[i]]
@@ -145,21 +135,19 @@ def similarity(NWORDS,s1, s2):
     for i in range(len(p2)):
         if p2[i] in NWORDS:
             x = NWORDS.index(p2[i])
-            v2[i] = cc.getline("/home/harethraouf/mysite/pythonanywhere/SemanticSpaceNew.txt",x+1)
+            v2[i] = cc.getline("/home/shortanswerplugin/mysite/pythonanywhere/SemanticSpaceNew.txt",x+1)
             v2[i]=v2[i].split()
             if p2[i]in NWORDS:
                 y = NWORDS.index(p2[i])
-                id = float(cc.getline("/home/harethraouf/mysite/pythonanywhere/TF_MinMax_cyber.txt",y+1))
+                id = float(cc.getline("/home/shortanswerplugin/mysite/pythonanywhere/TF_MinMax_cyber.txt",y+1))
             else:
                 id=1
             v2[i] = [float(j) * id for j in v2[i]]
         else:
-            #print("mot non trouve: ",p2[i])
             v2[i] = [0.0 for ii in range(len(NWORDS))]
-            #print("Vecteur :",v2[i])
 
     #***************************************************************************
-    # calcul de similarite par application de similarity de cosinus
+    # Similarity calculation
     W1 = [0 for i in range(len(NWORDS))]
     for i in range(len(NWORDS)):
         for j in range(len(v1)):
@@ -178,8 +166,7 @@ def home():
             x1 = request.args.get('donnee')
             x2= request.args.get('data')
 
-
-    with c.open("/home/harethraouf/mysite/pythonanywhere/WWords.txt","r","utf-8")as f:
+    with c.open("/home/shortanswerplugin/mysite/pythonanywhere/WWords.txt","r","utf-8")as f:
             stocks = f.read()
 
     stocks = stocks.split()
