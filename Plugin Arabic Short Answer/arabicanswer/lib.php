@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the arabicanswer question type.
+ * Defines the editing form for the arabicanswer1 question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @subpackage arabicanswer1
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -40,8 +40,8 @@ defined('MOODLE_INTERNAL') || die();
  * @param array $options additional options affecting the file serving
  * @return bool
  */
-function qtype_arabicanswer_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
+function qtype_arabicanswer1_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array()) {
     global $DB, $CFG;
     require_once($CFG->libdir . '/questionlib.php');
-    question_pluginfile($course, $context, 'qtype_arabicanswer', $filearea, $args, $forcedownload, $options);
+    question_pluginfile($course, $context, 'qtype_arabicanswer1', $filearea, $args, $forcedownload, $options);
 }
