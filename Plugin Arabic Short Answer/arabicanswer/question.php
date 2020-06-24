@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the arabicanswer question type.
+ * Defines the editing form for the arabicanswer1 question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @subpackage arabicanswer1
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,15 +28,15 @@ defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/question/type/questionbase.php');
 
 /**
- * Represents a arabicanswer question.
+ * Represents a arabicanswer1 question.
  *
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 /*Construct a question type instance everytime we create a new question*/
-/*Instancier une question apres chaque creation d'une question dans la banque a question*/
-class qtype_arabicanswer_question extends question_graded_automatically {
+ 
+class qtype_arabicanswer1_question extends question_graded_automatically {
     public function __construct() {
         parent::__construct();
     }
@@ -65,8 +65,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      * @param $response a response, as might be passed to {@link grade_response()}.
      * @return string a plain text summary of that response, that could be used in reports.
      */
-   /* Envoyer la réponse soumise par l'etudiant vers la base de données*/
-    /* Envoyer la réponse soumise par l'etudiant vers la base de données a afficher dans  les rapports */
+ 
     public function summarise_response(array $response) {
         if (isset($response['answer'])) {
           
@@ -89,7 +88,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      *      {@link question_attempt_step::get_qt_data()}.
      * @return bool whether this response is a complete answer to this question.
      */
-    /*Vérifier si l'etat de la reponse étudiant est complet ou incomplet*/
+    
     public function is_complete_response(array $response) {
         return array_key_exists('answer', $response) &&
                 ($response['answer'] || $response['answer'] === '0');
@@ -114,15 +113,11 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      * should generate a description of what the problem is.
      * @return string the message.
      */
-        /*
-        déterminer si la reponse de l'etudiant est valide ou pas
-        si ça retourne false il faut génerer une description pour ce probleme 
-        ça retourne false que lorsque on ajoute une condition a la validation des reponses
-        */
+         
         if ($this->is_gradable_response($response)) {
             return '';
         }
-        return get_string('pleaseenterananswer', 'qtype_arabicanswer');
+        return get_string('pleaseenterananswer', 'qtype_arabicanswer1');
     }
 
 
@@ -139,9 +134,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      * @return bool whether the two sets of responses are the same - that is
      *      whether the new set of responses can safely be discarded.
      */
-    /*
-    Si l'etudiant change la reponse et qu'elle est identique a sa reponse précedente la nouvelle reponse peut etre écarté et ne pas pris en considération 
-    */
+    
     public function is_same_response(array $prevresponse, array $newresponse) {
         return question_utils::arrays_same_at_key_missing_is_blank(
                 $prevresponse, $newresponse, 'answer');
@@ -156,7 +149,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      *
      * @return array|null parameter name => value.
      */
-    /*retourner la reponse modéle de l'enseignant */
+    /*return the model answer */
     public function get_correct_response() {
         foreach($this->answers as $cle => $valeur){
         $answer = $this->answers[$cle]->answer;
@@ -174,7 +167,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
 /********************************************************************************************/
 
 /**************************************************************************************/
- /*Assurer la Sécurité des réponses soumises par l'étudiant */
+ /*Ensure the security of responses submitted by the student */
  public static function checkInput($var)
                     {
          
@@ -214,6 +207,7 @@ class qtype_arabicanswer_question extends question_graded_automatically {
 
 /********************************************************************************************/
 /**
+     * Here we put our grader which is deployed on pythonanywhere   
      * Grade a response to the question, returning a fraction between
      * get_min_fraction() and get_max_fraction(), and the corresponding {@link question_state}
      * right, partial or wrong.
@@ -221,7 +215,8 @@ class qtype_arabicanswer_question extends question_graded_automatically {
      *      {@link question_attempt_step::get_qt_data()}.
      * @return array (float, integer) the fraction, and the state.
      */
-    /*Noter la réponse de l'étudiant et retourner la note et l'etat de la question*/
+    /*Grade the student's response and return the score fraction and the state of the question*/
+    
     public function grade_response(array $response) {
 
          if (!array_key_exists('answer', $response) || is_null($response['answer'])) {
@@ -233,12 +228,12 @@ class qtype_arabicanswer_question extends question_graded_automatically {
         
         }
       
-        
+      
         $donnee= self::safe_normalize($answer);
         $data =  str_replace(array("\r", "\n"), " ", self::safe_normalize($response['answer']));
-        $curlvar= curl_init(); //Initialise the cURL var
+        $curlvar= curl_init(); //Initialize the cURL var
         curl_setopt($curlvar,CURLOPT_RETURNTRANSFER, 1); //Get the response from cURL
-        curl_setopt($curlvar,CURLOPT_URL,'http://harethraouf.pythonanywhere.com/?donnee='.self::checkInput($donnee).'&data='.self::checkInput($data)); //Set the Url
+        curl_setopt($curlvar,CURLOPT_URL,'http://shortanswerplugin.pythonanywhere.com/?donnee='.self::checkInput($donnee).'&data='.self::checkInput($data)); //Set the Url
         $content= (string) self::checkInput(curl_exec($curlvar));
         curl_close($curlvar);
         $fraction = (float)$content;
