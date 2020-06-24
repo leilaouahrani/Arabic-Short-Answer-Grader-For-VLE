@@ -18,14 +18,14 @@
  * Defines the editing form for the arabicanswer question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @subpackage arabicanswer1
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['pluginname'] = 'اجابة قصيرة دلالية';
 $string['pluginname_help'] = 'فقط أدخل إجابة قالب وسيتم تعيين النتيجة تلقائيًا';
-$string['pluginname_link'] = 'question/type/arabicanswer';
+$string['pluginname_link'] = 'question/type/arabicanswer1';
 $string['pluginnameadding'] = 'إضافة سؤال';
 $string['pluginnameediting'] = 'تعديل سؤال';
 $string['pluginnamesummary'] = 'سؤال يقوم تلقائيًا بتعيين استجابات الطلاب بناءً على التشابه الدلالي مع استجابة نموذج المعلم.';
