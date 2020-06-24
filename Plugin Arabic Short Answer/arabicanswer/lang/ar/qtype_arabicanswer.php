@@ -24,7 +24,7 @@
  */
 
 $string['pluginname'] = 'اجابة قصيرة دلالية';
-$string['pluginname_help'] = 'فقط أدخل إجابة قالب وسيتم تعيين النتيجة تلقائيًا';
+$string['pluginname_help'] = 'يجب عليك إدخال إجابة قصيرة من خلال استهداف المفهوم المدروس مباشرة';
 $string['pluginname_link'] = 'question/type/arabicanswer1';
 $string['pluginnameadding'] = 'إضافة سؤال';
 $string['pluginnameediting'] = 'تعديل سؤال';
