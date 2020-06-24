@@ -18,13 +18,13 @@
  * Defines the editing form for the arabicanswer question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
+ * @subpackage arabicanswer1
  * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['pluginname'] = 'Arabic Semantic Short Answer 1';
-$string['pluginname_help'] = 'Just enter the model answer and the mark will be automatically assigned';
+$string['pluginname_help'] = 'Enter a short answer by directly targeting the concept studied';
 $string['pluginname_link'] = 'question/type/arabicanswer1';
 $string['pluginnameadding'] = 'Adding an arabicanswer1 question';
 $string['pluginnameediting'] = 'Editing an arabicanswer1 question';
