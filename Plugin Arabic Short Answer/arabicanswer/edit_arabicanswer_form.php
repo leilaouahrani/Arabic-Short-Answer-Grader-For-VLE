@@ -18,32 +18,32 @@
  * Defines the editing form for the arabicanswer question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @subpackage arabicanswer1
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 
 defined('MOODLE_INTERNAL') || die();
 
-/*Formulaire de notre type de question*/
+/*question form for our short answer grader */
 /**
- *arabicanswer question editing form definition.
+ *arabicanswer1 question editing form definition.
  *
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
 
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_arabicanswer_edit_form extends question_edit_form {
+class qtype_arabicanswer1_edit_form extends question_edit_form {
 
-    //Formulaire d'ajout d'une question
+    //Add question form
    protected function definition_inner($mform) {
        global $CFG ;
        
     
         $mform->addElement('static', 'answersinstruct',
-                get_string('modelanswer', 'qtype_arabicanswer'),
-                get_string('provideanswer', 'qtype_arabicanswer'));
+                get_string('modelanswer', 'qtype_arabicanswer1'),
+                get_string('provideanswer', 'qtype_arabicanswer1'));
         $mform->closeHeaderBefore('answersinstruct');
 
        
@@ -55,9 +55,9 @@ class qtype_arabicanswer_edit_form extends question_edit_form {
         $repeatedoptions = array();
       
        
-       // $mform->addElement('text', 'answer', get_string('modelanswer', 'qtype_arabicanswer'),
+       // $mform->addElement('text', 'answer', get_string('modelanswer', 'qtype_arabicanswer1'),
                 //array('size' => 150, 'maxlength' => 500));
-       $mform->addElement('textarea', 'answer',  get_string('modelanswer', 'qtype_arabicanswer'), 'wrap="virtual" rows="10" cols="120"');
+       $mform->addElement('textarea', 'answer',  get_string('modelanswer', 'qtype_arabicanswer1'), 'wrap="virtual" rows="10" cols="120"');
        $mform->setType('answer', PARAM_TEXT);
        $mform->addRule('answer', null, 'required', null, 'client');
       
@@ -92,6 +92,6 @@ class qtype_arabicanswer_edit_form extends question_edit_form {
 
 
     public function qtype() {
-        return 'arabicanswer';
+        return 'arabicanswer1';
     }
 }
