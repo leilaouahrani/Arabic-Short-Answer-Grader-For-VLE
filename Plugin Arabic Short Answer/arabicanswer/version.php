@@ -15,18 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * arabicanswer question type version information.
+ * arabicanswer1 question type version information.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  THEYEAR YOURNAME (YOURCONTACTINFO)
-
+ * @subpackage arabicanswer1
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qtype_arabicanswer';
+$plugin->component = 'qtype_arabicanswer1';
 $plugin->version   = 2019060300;
 
 $plugin->requires  = 2014051200;
