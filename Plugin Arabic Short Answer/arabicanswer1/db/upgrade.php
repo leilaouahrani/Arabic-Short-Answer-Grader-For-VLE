@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the editing form for the arabicanswer question type.
+ * Defines the editing form for the arabicanswer1 question type.
  *
  * @package    qtype
- * @subpackage arabicanswer
- * @copyright  2019 Snoussi El Hareth & Madani Abderraouf
+ * @subpackage arabicanswer1
+ * @copyright  2019 Snoussi El Hareth & Madani Abderraouf For C00L07UN100120180002 Project
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die();
  * Upgrade code for the essay question type.
  * @param int $oldversion the version we are upgrading from.
  */
-function xmldb_qtype_arabicanswer_upgrade($oldversion) {
+function xmldb_qtype_arabicanswer1_upgrade($oldversion) {
     global $CFG;
 
     // Automatically generated Moodle v3.2.0 release upgrade line.
