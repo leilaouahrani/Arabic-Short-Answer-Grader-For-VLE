@@ -13,8 +13,10 @@ Conception & Supervision : L. Ouahrani & D. Bennouar
 CONTENTS
 1. Introduction
 2. The Folder Structure
-2.a. The Moodle Plugin ShortAnswer V1
+
+2.a. The Moodle Plugin ShortAnswer V1 /
 2.b. Grader code on Distant server
+
 3. How to deploy ?
 4. Feedback
 5. Acknowledgments
