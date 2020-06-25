@@ -34,7 +34,7 @@ the CyberCrimes Course in Computer Science Department.
 2. Folder Structure (Plugin Moodle + Grader code on distant server)
 
 =====
-2.a. The Moodle Plugin ShortAnswer V1
+2.a. The Moodle Plugin ShortAnswer V1 (arabicanswer1) 
 
 This is a Moodle Plugin using  moodle question type template* and adapted to grade Arabic short answers scoring using NLP computation. 
 
