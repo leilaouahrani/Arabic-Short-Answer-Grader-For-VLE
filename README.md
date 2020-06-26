@@ -53,7 +53,6 @@ https://docs.moodle.org/37/en/Short-Answer_question_type
 =========================
 2.b. Grader code on Distant server /
 
-The Approach used for the grader is described here : https://ieeexplore.ieee.org/document/8672717
 The grader function is deployed on a distant server (Pythonanywhere) to release the platform 
 from the assessment task for this question type, 
 particularly when scoring a large number of online students at the same time.
