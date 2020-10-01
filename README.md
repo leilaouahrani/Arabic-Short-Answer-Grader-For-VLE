@@ -34,7 +34,10 @@ We use a semantic space for Word distribution based on word cooccurrences in tex
 The approach does not require word data models(WordNet, ArabicWordNet,  ....).  
 It is particularly suitable in situations where no large, publicly available, linguistic resources can be found
 for the desired language such as the Arabic Language. 
- 
+
+* Please see here for the semantic space approach proposed for the grader and its evaluation: 
+https://ieeexplore.ieee.org/document/8672717
+
 Actually the Grader is used on Moodle Bouira University Plateform for the learning and the assessment of 
 the CyberCrimes Course in Computer Science Department.
 
@@ -49,6 +52,7 @@ This is a Moodle Plugin using  moodle question type template* and adapted to gra
 * Please see here for more information about : Moodle-Short Answer Question Type : 
 https://docs.moodle.org/37/en/Short-Answer_question_type
 * Please see here for a Moodle Question-Type Template https://github.com/jamiepratt/moodle-qtype_TEMPLATE
+
 
 =========================
 2.b. Grader code on Distant server /
